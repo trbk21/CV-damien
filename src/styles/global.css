@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+:root {
+  --bg-primary: #000000;
+  --text-primary: #ffffff;
+  --text-secondary: #cbd5e1; /* slate-300 for better contrast */
+  --text-muted: #94a3b8; /* slate-400 */
+  --accent: #ffffff;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Texture de fond subtile */
+.bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.12;
+}
+
+/* Gradients monochrome */
+.hero-gradient {
+  background: radial-gradient(circle at top right, rgba(255, 255, 255, 0.05), transparent);
+}
+
+/* Styles spécifique pour l'impression A4 */
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  body {
+    background: white !important;
+    color: black !important;
+    font-weight: 400 !important;
+    -webkit-print-color-adjust: exact;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-container {
+    width: 210mm;
+    height: 297mm;
+    padding: 12mm !important;
+    display: grid !important;
+    grid-template-columns: 1fr 2fr !important;
+    gap: 1.5rem !important;
+    color: black !important;
+  }
+  .print-header {
+    grid-column: span 2;
+    border-bottom: 1px solid #000;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  .print-sidebar {
+    grid-column: 1;
+  }
+  .print-main {
+    grid-column: 2;
+  }
+  .card {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin-bottom: 1rem !important;
+    color: black !important;
+  }
+  h1 {
+    font-size: 2rem !important;
+    font-weight: 800 !important;
+    color: black !important;
+    text-transform: uppercase;
+    letter-spacing: -0.05em;
+  }
+  h2 {
+    font-size: 1.1rem !important;
+    font-weight: 700 !important;
+    border-bottom: 1px solid #000;
+    padding-bottom: 2px;
+    margin-bottom: 0.75rem !important;
+    color: black !important;
+    text-transform: uppercase;
+  }
+  h3 {
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+  }
+  .tags {
+    display: none !important;
+  }
+  .desc {
+    font-size: 9pt !important;
+    line-height: 1.3 !important;
+    color: black !important;
+  }
+  /* Force dark text for print regardless of web colors */
+  .text-slate-400, .text-slate-500, .text-slate-600, .text-slate-700, .text-white\/70, .text-white\/50 {
+    color: #000 !important;
+  }
+}

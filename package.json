@@ -9,6 +9,15 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.17.1"
+    "@lucide/astro": "^0.577.0",
+    "@tailwindcss/vite": "^4.2.1",
+    "astro": "^5.17.1",
+    "lucide-astro": "^0.556.0",
+    "pdf-extraction": "^1.0.2",
+    "pdf-parse": "^2.4.5",
+    "pdf-parse-fork": "^1.2.0",
+    "pdf-text-extract": "^1.5.0",
+    "pdfjs-dist": "^5.4.624",
+    "tailwindcss": "^4.2.1"
   }
 }
