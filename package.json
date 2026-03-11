@@ -9,7 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^12.6.13",
+    "@astrojs/cloudflare": "12.6.13",
     "@lucide/astro": "^0.577.0",
     "@tailwindcss/vite": "^4.2.1",
     "astro": "^5.17.1",
@@ -19,10 +19,10 @@
     "pdf-parse-fork": "^1.2.0",
     "pdf-text-extract": "^1.5.0",
     "pdfjs-dist": "^5.4.624",
-    "tailwindcss": "^4.2.1",
-    "wrangler": "^4.72.0"
+    "tailwindcss": "^4.2.1"
   },
   "devDependencies": {
-    "typescript": "^5.9.3"
+    "typescript": "5.9.3",
+    "wrangler": "^4.72.0"
   }
 }
