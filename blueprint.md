@@ -18,9 +18,9 @@ A high-end, monochrome, and minimalist portfolio. The design is strictly black a
     - **Components:** Profile photo en niveaux de gris, navigation minimaliste, bouton d'impression A4.
 
 ## Data & Content (Verified)
-- **Companies:** Kannuki, Mirinae, MIAM DESIGN, ISG, IBIGGDAI, Agence Dojo, Proactive Académie, It's a beautiful day, FRANFINANCE, Datina.
+- **Companies:** Kannuki, Mirinae, ESAM design, ISG, ISEGCOM, Agence Dojo, Proaction Académie, It's a beautiful day, FRANFINANCE, Evoléa.
 - **Key Dates Fixed:** 
-    - Proactive Académie: 2019 - 2023.
+    - Proaction Académie: 2019 - 2023.
     - Agence Dojo: juin 2008 - mai 2024.
     - Durées calculées pour mars 2026.
 
