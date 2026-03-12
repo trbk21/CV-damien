@@ -6,14 +6,14 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "deploy": "npm run build && wrangler deploy"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "12.6.13",
-    "@lucide/astro": "^0.577.0",
+    "@astrojs/cloudflare": "^12.6.13",
+    "@lucide/astro": "^0.470.0",
     "@tailwindcss/vite": "^4.2.1",
-    "astro": "^5.17.1",
-    "lucide-astro": "^0.556.0",
+    "astro": "^5.4.2",
     "pdf-extraction": "^1.0.2",
     "pdf-parse": "^2.4.5",
     "pdf-parse-fork": "^1.2.0",
@@ -22,7 +22,7 @@
     "tailwindcss": "^4.2.1"
   },
   "devDependencies": {
-    "typescript": "5.9.3",
-    "wrangler": "^4.72.0"
+    "typescript": "5.7.3",
+    "wrangler": "^3.111.0"
   }
 }

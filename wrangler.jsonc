@@ -1,0 +1,12 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cv-damien",
+  "compatibility_date": "2025-03-10",
+  "observability": {
+    "enabled": true
+  },
+  "pages_build_output_dir": "dist",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ]
+}
