@@ -19,6 +19,8 @@ A high-end, monochrome, and minimalist portfolio. The design is strictly black a
 
 ## Data & Content (Verified)
 - **Companies:** Kannuki, Mirinae, ESAM design, ISG, ISEGCOM, Agence Dojo, Proaction Académie, It's a beautiful day, FRANFINANCE, Evoléa.
+- **Key Changes:**
+    - Updated title for Kannuki to "Co-Dirigeant".
 - **Key Dates Fixed:** 
     - Proaction Académie: 2019 - 2023.
     - Agence Dojo: juin 2008 - mai 2024.
