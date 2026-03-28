@@ -2,130 +2,21 @@
 import Layout from '../layouts/Layout.astro';
 import { Mail, Globe, MapPin, Printer } from '@lucide/astro';
 
-const name = "Damien Miri";
-const title = "Creative Director & AI Solutions Architect";
-const email = "damienmiri@gmail.com"; 
-const location = "Paris, France";
-const websites = [
-    { name: "mirinae.fr", url: "https://mirinae.fr" },
-    { name: "kannuki.fr", url: "https://kannuki.fr" }
-];
+import { cvData } from '../data/cv';
 
-const softwareGroups = [
-    {
-        category: "Vibe Coding & Développement",
-        tools: ["Cursor", "VS Code", "Firebase Studio", "API IA / LLMs"]
-    },
-    {
-        category: "IA Générative & Automation",
-        tools: ["Flux de production IA", "Automation", "Agents intelligents"]
-    },
-    {
-        category: "3D & Réalité Étendue",
-        tools: ["Gaussian Splatting", "Photogrammétrie", "Unreal Engine", "Unity", "Blender", "Cinema 4D"]
-    },
-    {
-        category: "Design & Post-Production",
-        tools: ["Figma", "Photoshop", "After Effects", "Premiere", "Illustrator", "DaVinci Resolve"]
-    },
-    {
-        category: "Captation & Audio-Visuel",
-        tools: ["Matériel de captation expert", "Audio", "Vidéo 4K/8K"]
-    }
-];
+const { 
+    name, 
+    title, 
+    email, 
+    location, 
+    websites, 
+    softwareGroups, 
+    softSkills, 
+    experiences,
+    certification,
+    philosophies
+} = cvData;
 
-const softSkills = ["Empathie", "Écoute", "Leadership", "Créativité", "Adaptabilité", "Exigence", "Bienveillance"];
-
-const experiences = [
-    {
-        title: "Co-Dirigeant",
-        company: "Kannuki - Indépendant",
-        period: "mai 2024 - aujourd'hui · 1 an 10 mois",
-        location: "Île-de-France, France · Sur site",
-        desc: "Solutions de Sécurité Connectée & IA : Sélection et intégration de systèmes de contrôle d'accès intelligent (serrures biométriques, poignées connectées). Déploiement d'interfaces de gestion via un workflow assisté par IA.\n\nSourcing & Importation : Achat et sourcing direct de produits technologiques auprès de fournisseurs internationaux. Négociation, contrôle qualité et logistique d'importation.\n\nMise en œuvre Terrain : Accompagnement et configuration des solutions de sécurité aux besoins spécifiques des clients.",
-        skills: ["Gestion de la production", "Gestion de projet", "IA", "Sourcing"]
-    },
-    {
-        title: "Directeur de la création",
-        company: "Mirinae",
-        period: "mai 2023 - aujourd'hui · 2 ans 10 mois",
-        location: "France",
-        desc: "Création Visuelle & Identité Digitale : Conception d'identité visuelle et déploiement de solutions web modernes (Astro, Next.js). Exploration des flux de production graphique et vidéo via l'IA générative.\n\nExploration & Tech Immersive : Mise en œuvre de solutions innovantes captation par drone, photogrammétrie et environnements 3D (Unreal Engine). Intégration de l'IA dans les workflows créatifs.\n\nPasserelle France-Corée : Développement d'une structure qui fait le pont entre la France et la Corée du Sud.",
-        skills: ["Astro", "Drone", "Photogrammétrie", "IA Générative", "3D"]
-    },
-    {
-        title: "Expert IA & Workflows Créatifs",
-        company: "ESAM design - Indépendant",
-        period: "janv. 2024 - janv. 2025 · 1 an 1 mois",
-        location: "Paris, Île-de-France, France · À distance",
-        desc: "Pédagogie de l'innovation : Conception et animation de modules de formation axés sur l'expérimentation concrète de l'IA générative.\n\nAccompagnement au Changement : Éclairage des usages, des limites techniques et des opportunités stratégiques de l'IA dans le monde du travail.\n\nIngénierie de Workflows : Exploration d'outils et création de méthodes de travail adaptées aux transformations technologiques.",
-        skills: ["IA", "Workflows", "Formation", "Stratégie"]
-    },
-    {
-        title: "Formateur vidéo et motion design",
-        company: "ISG Institut Supérieur de Gestion - Indépendant",
-        period: "janv. 2023 - mars 2023 · 3 mois",
-        location: "Paris, Île-de-France, France · Sur site",
-        desc: "Enseignement et Initiation aux techniques de motion design et de captation audiovisuelle. Initiation aux techniques de captation, de post-production vidéo et de création 3D.\n\nIntégration de l'IA Générative : Animation de workshops sur l'utilisation des outils d'IA dans les workflows de création graphique et le marketing digital.",
-        skills: ["Motion Design", "3D", "Workshops IA"]
-    },
-    {
-        title: "Formateur en gestion de projets digitaux et en UX/UI",
-        company: "ISEGCOM",
-        period: "janv. 2022 - mars 2025 · 3 ans 3 mois",
-        location: "Sur site",
-        desc: "Gestion de Projet Digital & UX/UI : Enseignement des méthodologies de gestion de projet et des principes de conception d'interfaces. Formation avancée sur Figma et la recherche UX.",
-        skills: ["UX/UI", "Gestion de Projet", "Figma"]
-    },
-    {
-        title: "Directeur de la création",
-        company: "Agence Dojo - CDI",
-        period: "juin 2008 - mai 2024 · 15 ans 11 mois",
-        location: "Île-de-France, France",
-        desc: "Direction Artistique & Créative : Conception de l'identité visuelle et des chartes graphiques pour des campagnes d'envergure internationale.\n\nGestion de Projets Digitaux : Pilotage intégral de solutions numériques, de la conception UX/UI au déploiement technique.\n\nProduction de Contenus Immersifs & Innovants : Supervision de la création en motion design, production vidéo et éléments 3D. Introduction et intégration de technologies VR/XR.",
-        skills: ["Direction Artistique", "Branding", "VR/XR", "Motion"]
-    },
-    {
-        title: "Responsable Innovation Digitale & EdTech",
-        company: "Proaction Académie - Indépendant",
-        period: "2019 - 2023 · 4 ans",
-        location: "Île-de-France, France",
-        desc: "Conception de Produit SaaS : Architecture et pilotage du développement d'une solution SaaS dédiée à la formation.\n\nIngénierie de Plateforme LMS : Conception d'un système de gestion de l'apprentissage (Learning Management System) propriétaire.\n\nProduction Audiovisuelle & Streaming : Réalisation de vidéos de formation haute qualité et mise en place d'une infrastructure de diffusion en streaming.",
-        skills: ["SaaS", "LMS", "EdTech", "Streaming"]
-    },
-    {
-        title: "Responsable des Opérations Offshore | Ho Chi Minh-Ville",
-        company: "It's a beautiful day - CDI",
-        period: "juin 2005 - juin 2007 · 2 ans 1 mois",
-        location: "Viêt Nam · Sur site",
-        desc: "Lancement de Structure : Mission de création d'une filiale technologique et créative en Asie du Sud-Est.\n\nRecrutement & Talent Acquisition : Identification, sélection et formation intensive de solides équipes locales spécialisées dans la production graphique et digitale.\n\nManagement d'Excellence : Direction et montée en charge d'une équipe de plus de 20 experts.",
-        skills: ["Management", "Offshore", "Production"]
-    },
-    {
-        title: "Directeur artistique",
-        company: "It's a beautiful day - CDI",
-        period: "juin 2004 - juin 2005 · 1 an 1 mois",
-        location: "France · Sur site",
-        desc: "Direction Artistique & Conception : Création de concepts visuels et de supports publicitaires de haute qualité pour le compte de grandes agences et d'annonceurs majeurs.",
-        skills: ["Concept", "DA", "Print/Digital"]
-    },
-    {
-        title: "Directeur artistique",
-        company: "FRANFINANCE - CDD",
-        period: "juil. 2001 - sept. 2004 · 3 ans 3 mois",
-        location: "France · Sur site",
-        desc: "Amélioration de la communication publicitaire et digitale. Conception de campagnes et de supports de communication pour des produits financiers.",
-        skills: ["Communication", "Digital"]
-    },
-    {
-        title: "Infographiste",
-        company: "Evoléa - Contrat en alternance",
-        period: "sept. 2002 - juin 2004 · 1 an 10 mois",
-        location: "France · Sur site",
-        desc: "Conception & Mise en page : Création graphique et mise en page d'outil de communication print et digitaux pour des comptes de prestige.",
-        skills: ["Design graphique", "Pré-presse"]
-    }
-];
 ---
 
 <Layout title={`${name} | ${title}`}>
@@ -135,10 +26,11 @@ const experiences = [
             <div class="flex items-center gap-12 text-[10px] font-bold uppercase tracking-[0.4em]">
                 <a href="#about" class="hover:text-white transition-colors text-slate-400">Profil</a>
                 <a href="#experience" class="hover:text-white transition-colors text-slate-400">Parcours</a>
-                <button onclick="window.print()" class="text-white hover:text-white transition-all flex items-center gap-2 cursor-pointer border border-white/20 px-4 py-2 rounded-none">
+                <a href="/cv-full" class="text-white hover:text-white transition-all flex items-center gap-2 cursor-pointer border border-white/20 px-4 py-2 rounded-none">
                     <Printer size={12} />
-                    <span>CV A4</span>
-                </button>
+                    <span>CV PDF (Full)</span>
+                </a>
+
             </div>
         </div>
     </nav>
@@ -216,12 +108,13 @@ const experiences = [
                     </h2>
                     <div class="group">
                         <h3 class="text-[10px] font-bold tracking-[0.2em] uppercase mb-4 text-slate-300">
-                            Pilotage Drone
+                            {certification.title}
                         </h3>
                         <p class="text-[10px] font-normal text-slate-200 leading-relaxed bg-white/5 border border-white/10 p-3">
-                            <span class="font-bold text-white uppercase block mb-1 tracking-widest">CATS — Pilote Pro</span>
-                            Brevet théorique et pratique délivré par Drone Volt.
+                            <span class="font-bold text-white uppercase block mb-1 tracking-widest">{certification.role}</span>
+                            {certification.desc}
                         </p>
+
                     </div>
                 </section>
 
@@ -245,15 +138,14 @@ const experiences = [
                         Philosophie
                     </h2>
                     <div class="space-y-12">
-                        <div class="group">
-                            <h4 class="font-medium uppercase tracking-widest text-xs mb-2 text-slate-200">Arts Martiaux</h4>
-                            <p class="text-sm text-slate-300 leading-relaxed font-normal italic mb-1">35 ans de pratique</p>
-                            <p class="text-sm text-slate-300 leading-relaxed font-normal">Aïkido, Kendo, Tenshin Shōden Katori Shintō-ryū.</p>
-                        </div>
-                        <div class="group">
-                            <h4 class="font-medium uppercase tracking-widest text-xs mb-2 text-slate-200">Éthique</h4>
-                            <p class="text-sm text-slate-300 leading-relaxed font-normal">Analyse critique des transformations technologiques et de leur impact sociétal.</p>
-                        </div>
+                        {philosophies.map(phi => (
+                            <div class="group">
+                                <h4 class="font-medium uppercase tracking-widest text-xs mb-2 text-slate-200">{phi.title}</h4>
+                                {phi.detail && <p class="text-sm text-slate-300 leading-relaxed font-normal italic mb-1">{phi.detail}</p>}
+                                <p class="text-sm text-slate-300 leading-relaxed font-normal">{phi.desc}</p>
+                            </div>
+                        ))}
+
                     </div>
                 </section>
             </aside>
@@ -309,9 +201,9 @@ const experiences = [
                 Damien Miri — Creative Director / AI Solutions Architect
             </p>
             <div class="pt-12">
-                <button onclick="window.print()" class="text-white hover:text-white border border-white/20 hover:border-white px-16 py-4 rounded-none text-[10px] font-bold uppercase tracking-[0.5em] transition-all cursor-pointer">
-                    Export PDF (A4)
-                </button>
+                <a href="/cv-full" class="text-white hover:text-white border border-white/20 hover:border-white px-16 py-4 rounded-none text-[10px] font-bold uppercase tracking-[0.5em] transition-all cursor-pointer">
+                    Export Version Longue (PDF)
+                </a>
             </div>
         </div>
     </footer>

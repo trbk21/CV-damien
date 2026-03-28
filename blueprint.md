@@ -3,10 +3,10 @@
 ## Overview
 A high-end, monochrome, and minimalist portfolio. The design is strictly black and white with shades of gray, conveying a sense of timeless elegance, creative authority, and technical precision.
 
-## Current Status: DEPLOYED
-- **Platform:** Cloudflare Pages
-- **Framework:** Astro.js (Static)
-- **URL:** https://cv-damien.pages.dev (ou équivalent)
+## Current Status: COMPLETED
+- [x] **A4 HTML Version:** Dedicated, printable A4 version at `/cv-a4`.
+- [x] **Shared Data:** Content centralized in `src/data/cv.ts`.
+- [x] **Ordering:** Mirinae is now positioned before Kannuki.
 
 ## Design Philosophy (Strict Monochrome)
 - **Website Mode:**
@@ -16,23 +16,20 @@ A high-end, monochrome, and minimalist portfolio. The design is strictly black a
         - Text Primary: #FFFFFF (White).
         - Text Secondary: #94a3b8 (Slate-400).
     - **Components:** Profile photo en niveaux de gris, navigation minimaliste, bouton d'impression A4.
+- **A4 Print Mode:**
+    - **Aesthetics:** Professional white background, high-contrast black typography.
+    - **Layout:** Optimized two-column layout for A4 (210mm x 297mm).
+    - **Typography:** Inter (Standard/Bold) for maximum legibility.
 
-## Data & Content (Verified)
-- **Companies:** Kannuki, Mirinae, ESAM design, ISG, ISEGCOM, Agence Dojo, Proaction Académie, It's a beautiful day, FRANFINANCE, Evoléa.
-- **Key Changes:**
-    - Updated title for Kannuki to "Co-Dirigeant".
-- **Key Dates Fixed:** 
-    - Proaction Académie: 2019 - 2023.
-    - Agence Dojo: juin 2008 - mai 2024.
-    - Durées calculées pour mars 2026.
-
-## Deployment Configuration
-- **Build Command:** `npm run build`
-- **Deploy Command:** `true` (Bypass manual wrangler)
-- **Output Directory:** `dist`
-- **Root Directory:** `/` (Empty)
+## Completed Tasks
+- [x] **A4 HTML Version:** Created a dedicated, printable A4 version of the CV with a separate layout and light theme for optimal printing.
+    - [x] Centralized content into `src/data/cv.ts`.
+    - [x] Created `src/pages/cv-a4.astro` with "paper-simulation" design.
+    - [x] Optimized typography and page breaks for A4.
 
 ## Future Enhancements
 - [ ] SEO/Open Graph Optimization for LinkedIn.
 - [ ] JSON-LD Structured Data for Google.
 - [ ] Interactive 3D/Gaussian Splatting background elements.
+
+
