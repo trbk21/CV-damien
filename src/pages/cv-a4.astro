@@ -5,6 +5,7 @@ import { Mail, Globe, MapPin, Printer, ArrowLeft } from '@lucide/astro';
 const { 
     name, 
     title, 
+    tagline,
     email, 
     location, 
     websites, 
@@ -12,7 +13,8 @@ const {
     softSkills, 
     experiences,
     certification,
-    philosophies
+    philosophies,
+    teaching
 } = cvData;
 ---
 
@@ -325,6 +327,19 @@ const {
                     <div style="font-size: 8pt; font-weight: 700; color: var(--text-main); margin-bottom: 1mm;">{certification.role}</div>
                     <div style="font-size: 8pt; color: var(--text-muted); line-height: 1.4;">{certification.desc}</div>
                 </section>
+                
+                <section>
+                    <h2>Transmission</h2>
+                    <div style="display: flex; flex-direction: column; gap: 3.5mm;">
+                        {teaching.map(item => (
+                            <div>
+                                <div style="font-size: 7.5pt; font-weight: 800; text-transform: uppercase; line-height: 1.2;">{item.company}</div>
+                                <div style="font-size: 7.5pt; font-weight: 600; color: var(--text-main);">{item.title}</div>
+                                <div style="font-size: 7pt; color: var(--text-muted); line-height: 1.3;">{item.period} — {item.desc}</div>
+                            </div>
+                        ))}
+                    </div>
+                </section>
 
                 <section>
                     <h2>Soft Skills</h2>
@@ -354,6 +369,7 @@ const {
                 <header>
                     <h1>{name}</h1>
                     <div class="subtitle">{title}</div>
+                    {tagline && <div style="font-size: 7pt; color: #94a3b8; margin-top: 1.5mm; font-style: italic; letter-spacing: 0.05em; font-weight: 500;">{tagline}</div>}
                 </header>
 
                 <section>

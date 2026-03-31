@@ -7,6 +7,7 @@ import { cvData } from '../data/cv';
 const { 
     name, 
     title, 
+    tagline,
     email, 
     location, 
     websites, 
@@ -14,7 +15,8 @@ const {
     softSkills, 
     experiences,
     certification,
-    philosophies
+    philosophies,
+    teaching
 } = cvData;
 
 ---
@@ -54,6 +56,11 @@ const {
                     <p class="text-xl lg:text-2xl text-slate-300 font-extralight tracking-[0.3em] uppercase">
                         {title}
                     </p>
+                    {tagline && (
+                        <p class="text-[10px] lg:text-xs text-slate-500 font-medium tracking-[0.2em] uppercase italic opacity-80 decoration-slate-800">
+                            {tagline}
+                        </p>
+                    )}
                 </div>
                 
                 <div class="flex flex-wrap justify-center lg:justify-start gap-12">
@@ -189,6 +196,26 @@ const {
                         </div>
                     ))}
                 </div>
+
+                <!-- Teaching -->
+                <div class="mt-48">
+                    <h2 class="text-xs font-black uppercase tracking-[0.6em] mb-12 text-slate-400 flex items-center gap-4">
+                        <span class="w-4 h-px bg-slate-800"></span>
+                        Transmission & Pédagogie
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        {teaching.map(item => (
+                            <div class="group bg-white/5 border border-white/10 p-8 space-y-4">
+                                <div class="flex justify-between items-start">
+                                    <span class="text-[9px] font-bold text-slate-400 uppercase tracking-[0.4em]">{item.period}</span>
+                                </div>
+                                <h3 class="text-lg font-light text-white leading-tight uppercase tracking-widest">{item.title}</h3>
+                                <div class="text-[10px] font-bold text-slate-300 uppercase tracking-[0.2em] italic">{item.company}</div>
+                                <p class="text-xs text-slate-400 leading-relaxed font-normal">{item.desc}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
             </div>
         </div>
     </main>
@@ -198,7 +225,7 @@ const {
         <div class="max-w-4xl mx-auto text-center space-y-16">
             <h2 class="text-2xl lg:text-4xl font-thin tracking-[0.2em] text-white uppercase">Rigueur, Créativité & Innovation.</h2>
             <p class="text-slate-400 text-[10px] font-bold uppercase tracking-[0.5em] leading-relaxed">
-                Damien Miri — Creative Director / AI Solutions Architect
+                Damien Miri — Creative Tech | AI Workflows & Fullstack Design
             </p>
             <div class="pt-12">
                 <a href="/cv-full" class="text-white hover:text-white border border-white/20 hover:border-white px-16 py-4 rounded-none text-[10px] font-bold uppercase tracking-[0.5em] transition-all cursor-pointer">

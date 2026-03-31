@@ -5,6 +5,7 @@ import { Mail, Globe, MapPin, Printer, ArrowLeft } from '@lucide/astro';
 const { 
     name, 
     title, 
+    tagline,
     email, 
     location, 
     websites, 
@@ -12,7 +13,8 @@ const {
     softSkills, 
     experiences,
     certification,
-    philosophies
+    philosophies,
+    teaching
 } = cvData;
 ---
 
@@ -354,6 +356,7 @@ const {
                 <header>
                     <h1>{name}</h1>
                     <div class="subtitle">{title}</div>
+                    {tagline && <div style="font-size: 8pt; color: #94a3b8; margin-top: 5px; font-style: italic; letter-spacing: 0.1em; font-weight: 500;">{tagline}</div>}
                 </header>
 
                 <section>
@@ -377,6 +380,20 @@ const {
                                         ))}
                                     </div>
                                 )}
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Transmission & Pédagogie</h2>
+                    <div style="display: flex; flex-direction: column; gap: 25px;">
+                        {teaching.map(item => (
+                            <div class="exp-item">
+                                <div class="exp-meta">{item.period}</div>
+                                <h3 style="font-size: 12pt;">{item.title}</h3>
+                                <div class="exp-company">{item.company}</div>
+                                <div class="exp-desc">{item.desc}</div>
                             </div>
                         ))}
                     </div>

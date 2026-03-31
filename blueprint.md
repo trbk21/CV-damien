@@ -1,31 +1,19 @@
-# Project Blueprint - Damien Miri CV (Monochrome Minimalist)
+# Project Blueprint - DAMIEN MIRI (Creative Tech | AI Workflows & Fullstack Design)
 
-## Overview
-A high-end, monochrome, and minimalist portfolio. The design is strictly black and white with shades of gray, conveying a sense of timeless elegance, creative authority, and technical precision.
-
-## Current Status: COMPLETED
-- [x] **A4 HTML Version:** Dedicated, printable A4 version at `/cv-a4`.
-- [x] **Shared Data:** Content centralized in `src/data/cv.ts`.
-- [x] **Ordering:** Mirinae is now positioned before Kannuki.
-
-## Design Philosophy (Strict Monochrome)
-- **Website Mode:**
-    - **Aesthetics:** Pure black background (#000000), white and gray typography.
-    - **Color Palette:** 
-        - Primary Background: #000000 (Pure Black).
-        - Text Primary: #FFFFFF (White).
-        - Text Secondary: #94a3b8 (Slate-400).
-    - **Components:** Profile photo en niveaux de gris, navigation minimaliste, bouton d'impression A4.
-- **A4 Print Mode:**
-    - **Aesthetics:** Professional white background, high-contrast black typography.
-    - **Layout:** Optimized two-column layout for A4 (210mm x 297mm).
-    - **Typography:** Inter (Standard/Bold) for maximum legibility.
+    - **Aesthetics:** High-end Technical/Creative mix. Monochrome base with slate accents.
+    - **Layout:** Optimized two-column layout for A4 (210mm x 297mm) and Full (web preview).
+    - **Typography:** Inter (Thin to Black variants) for a premium, structured feel.
+    - **Branding:** "Creative Tech" focus with a subtle "Martial Arts Discipline" sub-layer.
 
 ## Completed Tasks
-- [x] **A4 HTML Version:** Created a dedicated, printable A4 version of the CV with a separate layout and light theme for optimal printing.
-    - [x] Centralized content into `src/data/cv.ts`.
-    - [x] Created `src/pages/cv-a4.astro` with "paper-simulation" design.
-    - [x] Optimized typography and page breaks for A4.
+- [x] **A4 HTML Version:** Dedicated printable A4 version with a separate layout.
+- [x] **Full Web Version:** Long-form CV for digital exploration.
+- [x] **Dynamic Content:** Centralized content in `src/data/cv.ts`.
+- [x] **Professional Pivot:** Updated identity to **Creative Tech | AI Workflows & Fullstack Design**.
+- [x] **Subtle Martial Arts:** Integrated 35 years of discipline as an ethical and technical baseline.
+- [x] **Deepened Professional Context:** Enhanced descriptions for **Mirinae** and **Kannuki** using brand research.
+- [x] **LinkedIn/Official Sync:** Updated all professional experiences with precise periods (e.g., "16 ans" for Dojo) and client lists (L'Oréal, Dior, BASF...).
+- [x] **Transmission & Pédagogie:** Added a parallel teaching section (ESAM, ISG, ISEGCOM) in the A4 sidebar and secondary web blocks to maintain focus on the professional path.
 
 ## Future Enhancements
 - [ ] SEO/Open Graph Optimization for LinkedIn.
