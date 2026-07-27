@@ -1,17 +1,18 @@
 ---
 import { cvData } from '../data/cv';
-import { Mail, Globe, MapPin, Printer, ArrowLeft } from '@lucide/astro';
+import { Mail, Globe, MapPin, Printer, ArrowLeft, Calendar } from '@lucide/astro';
 
 const { 
     name, 
     title, 
     tagline,
     email, 
+    birthDate,
     location, 
     websites, 
     softwareGroups, 
     softSkills, 
-    experiences,
+    experiencesA4: experiences,
     certification,
     philosophies,
     teaching
@@ -31,7 +32,7 @@ const {
         <style>
             :root {
                 --paper-width: 210mm;
-                --paper-height: 297mm;
+                --paper-height: 295mm;
                 --sidebar-bg: #f8fafc;
                 --text-main: #0f172a;
                 --text-muted: #475569;
@@ -46,7 +47,7 @@ const {
             body {
                 margin: 0;
                 padding: 0;
-                background-color: #f1f5f9;
+                background-color: white;
                 font-family: 'Inter', sans-serif;
                 color: var(--text-main);
                 -webkit-font-smoothing: antialiased;
@@ -68,7 +69,7 @@ const {
 
             .btn {
                 display: flex;
-                items-center: center;
+                align-items: center;
                 gap: 0.5rem;
                 padding: 0.5rem 1rem;
                 font-size: 0.75rem;
@@ -89,35 +90,33 @@ const {
 
             .a4-container {
                 width: var(--paper-width);
-                min-height: var(--paper-height);
-                margin: 2rem auto;
+                height: var(--paper-height);
+                margin: 0 auto;
                 background: white;
-                box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.15);
                 display: flex;
                 position: relative;
                 overflow: hidden;
             }
 
             .sidebar {
-                width: 75mm;
+                width: 60mm;
                 background-color: var(--sidebar-bg);
-                padding: 10mm;
-                border-right: 1px solid var(--border-color);
+                padding: 4mm 5mm 3mm 5mm;
                 display: flex;
                 flex-direction: column;
-                gap: 8mm;
+                gap: 2.5mm;
             }
 
             .main-content {
                 flex: 1;
-                padding: 10mm 12mm;
+                padding: 4mm 10mm 3mm 10mm;
                 display: flex;
                 flex-direction: column;
-                gap: 8mm;
+                gap: 4mm;
             }
 
             h1 {
-                font-size: 28pt;
+                font-size: 22pt;
                 font-weight: 900;
                 line-height: 1;
                 margin: 0;
@@ -126,30 +125,30 @@ const {
             }
 
             .subtitle {
-                font-size: 10pt;
+                font-size: 9pt;
                 font-weight: 300;
                 text-transform: uppercase;
                 letter-spacing: 0.3em;
                 color: var(--text-muted);
-                margin-top: 2mm;
+                margin-top: 1mm;
             }
 
             h2 {
-                font-size: 9pt;
+                font-size: 8.5pt;
                 font-weight: 900;
                 text-transform: uppercase;
                 letter-spacing: 0.4em;
-                color: var(--text-muted);
+                color: var(--text-main);
                 border-bottom: 2px solid var(--text-main);
-                padding-bottom: 2mm;
-                margin-bottom: 4mm;
+                padding-bottom: 0.5mm;
+                margin-bottom: 1.5mm;
                 display: flex;
                 align-items: center;
-                gap: 3mm;
+                gap: 2mm;
             }
 
             h3 {
-                font-size: 11pt;
+                font-size: 9.5pt;
                 font-weight: 700;
                 margin: 0;
                 letter-spacing: -0.02em;
@@ -158,22 +157,22 @@ const {
             .contact-item {
                 display: flex;
                 align-items: center;
-                gap: 3mm;
-                font-size: 8pt;
+                gap: 2mm;
+                font-size: 7.5pt;
                 font-weight: 500;
                 color: var(--text-muted);
             }
 
             .section-title-dot {
-                width: 2mm;
-                height: 2mm;
+                width: 1.5mm;
+                height: 1.5mm;
                 background: var(--text-main);
             }
 
             .skill-tag {
-                font-size: 7.5pt;
+                font-size: 6pt;
                 font-weight: 600;
-                padding: 1mm 2mm;
+                padding: 0.5mm 1.2mm;
                 border: 1px solid var(--border-color);
                 background: white;
                 white-space: nowrap;
@@ -181,82 +180,90 @@ const {
 
             .exp-item {
                 position: relative;
-                padding-left: 6mm;
+                padding-left: 5mm;
+                padding-bottom: 3.5mm;
                 border-left: 1px solid var(--border-color);
+            }
+
+            .exp-item:last-child {
+                padding-bottom: 0;
             }
 
             .exp-dot {
                 position: absolute;
-                left: -1.5mm;
-                top: 2mm;
-                width: 3mm;
-                height: 3mm;
+                left: -1.25mm;
+                top: 1.5mm;
+                width: 2.5mm;
+                height: 2.5mm;
                 background: white;
                 border: 1px solid var(--text-main);
+                border-radius: 50%;
             }
 
             .exp-meta {
-                font-size: 8pt;
+                font-size: 7.5pt;
                 font-weight: 700;
                 color: #64748b;
                 text-transform: uppercase;
                 letter-spacing: 0.1em;
-                margin-bottom: 1mm;
+                margin-bottom: 0.5mm;
             }
 
             .exp-company {
-                font-size: 9pt;
+                font-size: 8pt;
                 font-weight: 600;
                 font-style: italic;
                 color: #475569;
-                margin-bottom: 3mm;
+                margin-bottom: 0.4mm;
             }
 
             .exp-desc {
-                font-size: 9pt;
-                line-height: 1.5;
+                font-size: 7.7pt;
+                line-height: 1.26;
                 color: #334155;
             }
 
-            .exp-desc p { margin-bottom: 2mm; }
+            .exp-desc p {
+                margin-top: 0;
+                margin-bottom: 0.6mm;
+            }
+            .exp-desc p:last-child {
+                margin-bottom: 0;
+            }
 
             .exp-skills {
                 display: flex;
                 flex-wrap: wrap;
-                gap: 1.5mm;
-                margin-top: 3mm;
+                gap: 1mm;
+                margin-top: 1mm;
             }
 
             .exp-skill {
-                font-size: 7pt;
+                font-size: 5.5pt;
                 font-weight: 800;
                 text-transform: uppercase;
-                padding: 0.5mm 1.5mm;
+                padding: 0.2mm 0.8mm;
                 border: 1px solid #cbd5e1;
                 color: #64748b;
             }
 
             @media print {
-                body {
-                    background: white;
-                }
                 .no-print-header {
                     display: none !important;
                 }
                 .a4-container {
                     margin: 0;
                     box-shadow: none;
-                    width: 210mm;
-                    height: 297mm;
                 }
             }
 
             .profile-img-container {
-                width: 55mm;
-                height: 55mm;
-                border: 1px solid var(--border-color);
+                width: 42mm;
+                height: 42mm;
                 overflow: hidden;
                 filter: grayscale(1);
+                margin-bottom: 2mm;
+                border-radius: 50%;
             }
 
             .profile-img-container img {
@@ -287,6 +294,12 @@ const {
                 </div>
 
                 <div class="space-y-4">
+                    {birthDate && (
+                        <div class="contact-item">
+                            <Calendar size={12} />
+                            Né le {birthDate}
+                        </div>
+                    )}
                     <div class="contact-item">
                         <Mail size={12} />
                         {email}
@@ -305,13 +318,13 @@ const {
 
                 <section>
                     <h2>Outils & Expertise</h2>
-                    <div style="display: flex; flex-direction: column; gap: 4mm;">
+                    <div style="display: flex; flex-direction: column; gap: 2mm;">
                         {softwareGroups.map(group => (
                             <div>
-                                <div style="font-size: 7.5pt; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 2mm;">
+                                <div style="font-size: 7pt; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 1mm;">
                                     {group.category}
                                 </div>
-                                <div style="display: flex; flex-wrap: wrap; gap: 1.5mm;">
+                                <div style="display: flex; flex-wrap: wrap; gap: 1mm;">
                                     {group.tools.map(tool => (
                                         <span class="skill-tag">{tool}</span>
                                     ))}
@@ -323,27 +336,16 @@ const {
 
                 <section>
                     <h2>Certification</h2>
-                    <div style="font-size: 8pt; font-weight: 800; text-transform: uppercase; margin-bottom: 1mm;">{certification.title}</div>
-                    <div style="font-size: 8pt; font-weight: 700; color: var(--text-main); margin-bottom: 1mm;">{certification.role}</div>
-                    <div style="font-size: 8pt; color: var(--text-muted); line-height: 1.4;">{certification.desc}</div>
+                    <div style="font-size: 7.5pt; font-weight: 800; text-transform: uppercase; margin-bottom: 0.5mm;">{certification.title}</div>
+                    <div style="font-size: 7.5pt; font-weight: 700; color: var(--text-main); margin-bottom: 0.5mm;">{certification.role}</div>
+                    <div style="font-size: 7.5pt; color: var(--text-muted); line-height: 1.25;">{certification.desc}</div>
                 </section>
                 
-                <section>
-                    <h2>Transmission</h2>
-                    <div style="display: flex; flex-direction: column; gap: 3.5mm;">
-                        {teaching.map(item => (
-                            <div>
-                                <div style="font-size: 7.5pt; font-weight: 800; text-transform: uppercase; line-height: 1.2;">{item.company}</div>
-                                <div style="font-size: 7.5pt; font-weight: 600; color: var(--text-main);">{item.title}</div>
-                                <div style="font-size: 7pt; color: var(--text-muted); line-height: 1.3;">{item.period} — {item.desc}</div>
-                            </div>
-                        ))}
-                    </div>
-                </section>
+
 
                 <section>
                     <h2>Soft Skills</h2>
-                    <div style="display: flex; flex-wrap: wrap; gap: 2mm;">
+                    <div style="display: flex; flex-wrap: wrap; gap: 1mm;">
                         {softSkills.map(skill => (
                             <span class="skill-tag" style="text-transform: uppercase; letter-spacing: 0.05em;">{skill}</span>
                         ))}
@@ -352,12 +354,12 @@ const {
 
                 <section>
                     <h2>Philosophie</h2>
-                    <div style="display: flex; flex-direction: column; gap: 4mm;">
+                    <div style="display: flex; flex-direction: column; gap: 2mm;">
                         {philosophies.map(phi => (
                             <div>
-                                <div style="font-size: 8pt; font-weight: 800; text-transform: uppercase; margin-bottom: 1mm;">{phi.title}</div>
-                                {phi.detail && <div style="font-size: 8pt; font-style: italic; color: var(--text-muted); margin-bottom: 0.5mm;">{phi.detail}</div>}
-                                <div style="font-size: 8pt; color: var(--text-muted); line-height: 1.4;">{phi.desc}</div>
+                                <div style="font-size: 7.5pt; font-weight: 800; text-transform: uppercase; margin-bottom: 0.5mm;">{phi.title}</div>
+                                {phi.detail && <div style="font-size: 7.5pt; font-style: italic; color: var(--text-muted); margin-bottom: 0.5mm;">{phi.detail}</div>}
+                                <div style="font-size: 7.5pt; color: var(--text-muted); line-height: 1.25;">{phi.desc}</div>
                             </div>
                         ))}
                     </div>
@@ -368,13 +370,13 @@ const {
             <main class="main-content">
                 <header>
                     <h1>{name}</h1>
-                    <div class="subtitle">{title}</div>
+                    {title && <div class="subtitle">{title}</div>}
                     {tagline && <div style="font-size: 7pt; color: #94a3b8; margin-top: 1.5mm; font-style: italic; letter-spacing: 0.05em; font-weight: 500;">{tagline}</div>}
                 </header>
 
                 <section>
                     <h2>Parcours Professionnel</h2>
-                    <div style="display: flex; flex-direction: column; gap: 8mm;">
+                    <div style="display: flex; flex-direction: column;">
                         {experiences.map(exp => (
                             <div class="exp-item">
                                 <div class="exp-dot"></div>
@@ -382,7 +384,7 @@ const {
                                 <h3>{exp.title}</h3>
                                 <div class="exp-company">{exp.company} — {exp.location}</div>
                                 <div class="exp-desc">
-                                    {exp.desc.split('\n\n').map(p => (
+                                    {exp.desc.split('\n').map(p => (
                                         <p>{p}</p>
                                     ))}
                                 </div>
@@ -393,6 +395,21 @@ const {
                                         ))}
                                     </div>
                                 )}
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Transmission & Pédagogie</h2>
+                    <div style="display: flex; flex-direction: column;">
+                        {teaching.map(item => (
+                            <div class="exp-item">
+                                <div class="exp-dot"></div>
+                                <div class="exp-meta">{item.period}</div>
+                                <h3>{item.title}</h3>
+                                <div class="exp-company">{item.company}</div>
+                                <div class="exp-desc">{item.desc}</div>
                             </div>
                         ))}
                     </div>

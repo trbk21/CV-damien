@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { Mail, Globe, MapPin, Printer } from '@lucide/astro';
+import { Mail, Globe, MapPin, Printer, Calendar } from '@lucide/astro';
 
 import { cvData } from '../data/cv';
 
@@ -9,6 +9,7 @@ const {
     title, 
     tagline,
     email, 
+    birthDate,
     location, 
     websites, 
     softwareGroups, 
@@ -21,13 +22,13 @@ const {
 
 ---
 
-<Layout title={`${name} | ${title}`}>
+<Layout title={title ? `${name} | ${title}` : name}>
     <!-- Navigation (Web Only) -->
     <nav class="no-print sticky top-0 z-50 bg-black/90 backdrop-blur-md border-b border-white/10 px-6 py-4">
         <div class="max-w-6xl mx-auto flex justify-end items-center">
             <div class="flex items-center gap-12 text-[10px] font-bold uppercase tracking-[0.4em]">
-                <a href="#about" class="hover:text-white transition-colors text-slate-400">Profil</a>
                 <a href="#experience" class="hover:text-white transition-colors text-slate-400">Parcours</a>
+                <a href="#about" class="hover:text-white transition-colors text-slate-400">Profil & Expertise</a>
                 <a href="/cv-full" class="text-white hover:text-white transition-all flex items-center gap-2 cursor-pointer border border-white/20 px-4 py-2 rounded-none">
                     <Printer size={12} />
                     <span>CV PDF (Full)</span>
@@ -44,7 +45,7 @@ const {
         <header id="about" class="print-header flex flex-col lg:flex-row gap-16 items-center lg:items-start relative">
             <div class="hero-gradient absolute -top-48 -right-48 w-96 h-96 pointer-events-none"></div>
             
-            <div class="w-64 h-64 lg:w-72 lg:h-72 rounded-none overflow-hidden grayscale border border-white/20 flex-shrink-0 bg-white/5">
+            <div class="w-64 h-64 lg:w-72 lg:h-72 rounded-full overflow-hidden grayscale border border-white/20 flex-shrink-0 bg-white/5">
                 <img src="/Damien-miri.webp" alt={name} class="w-full h-full object-cover opacity-90" />
             </div>
 
@@ -53,9 +54,11 @@ const {
                     <h1 class="text-6xl lg:text-8xl font-thin text-white tracking-tighter leading-none">
                         {name.toUpperCase()}
                     </h1>
-                    <p class="text-xl lg:text-2xl text-slate-300 font-extralight tracking-[0.3em] uppercase">
-                        {title}
-                    </p>
+                    {title && (
+                        <p class="text-xl lg:text-2xl text-slate-300 font-extralight tracking-[0.3em] uppercase">
+                            {title}
+                        </p>
+                    )}
                     {tagline && (
                         <p class="text-[10px] lg:text-xs text-slate-500 font-medium tracking-[0.2em] uppercase italic opacity-80 decoration-slate-800">
                             {tagline}
@@ -64,6 +67,12 @@ const {
                 </div>
                 
                 <div class="flex flex-wrap justify-center lg:justify-start gap-12">
+                    {birthDate && (
+                        <div class="flex items-center gap-3">
+                            <Calendar size={14} class="text-slate-400" />
+                            <span class="text-xs font-medium text-slate-200 tracking-wider">Né le {birthDate}</span>
+                        </div>
+                    )}
                     <div class="flex items-center gap-3">
                         <Mail size={14} class="text-slate-400" />
                         <span class="text-xs font-medium text-slate-200 tracking-wider">{email}</span>
@@ -83,7 +92,68 @@ const {
         </header>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-24">
-            <!-- Left: Sidebar Info -->
+            <!-- Left (Main): Experiences & Parcours -->
+            <div id="experience" class="print-main lg:col-span-8 space-y-12">
+                <h2 class="text-xs font-black uppercase tracking-[0.6em] mb-12 text-slate-400 flex items-center gap-4">
+                    <span class="w-4 h-px bg-slate-800"></span>
+                    Parcours
+                </h2>
+
+                <div class="space-y-32 border-l border-white/10 ml-2 pl-12">
+                    {experiences.map(exp => (
+                        <div class="relative group">
+                            <div class="absolute -left-[52.5px] top-2 w-1.5 h-1.5 bg-slate-800 border border-slate-600 group-hover:bg-white group-hover:border-white transition-colors"></div>
+                            <div class="mb-8 space-y-3">
+                                <span class="text-[9px] font-bold text-slate-400 uppercase tracking-[0.4em]">
+                                    {exp.period}
+                                </span>
+                                <h3 class="text-2xl font-light text-white group-hover:text-white transition-colors tracking-tight">
+                                    {exp.title}
+                                </h3>
+                                <div class="text-xs font-medium text-slate-300 uppercase tracking-[0.2em] italic">
+                                    {exp.company} {exp.location && `— ${exp.location}`}
+                                </div>
+                            </div>
+                            <div class="desc text-slate-200 leading-relaxed max-w-2xl text-sm font-normal space-y-6">
+                                {exp.desc.split('\n\n').map(p => (
+                                    <p>{p}</p>
+                                ))}
+                            </div>
+                            {exp.skills && (
+                                <div class="mt-12 flex flex-wrap gap-2">
+                                    {exp.skills.map(skill => (
+                                        <span class="text-[8px] font-bold px-2 py-0.5 border border-white/10 text-slate-300 uppercase tracking-tighter bg-white/5">
+                                            {skill}
+                                        </span>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+                    ))}
+                </div>
+
+                <!-- Teaching -->
+                <div class="mt-48">
+                    <h2 class="text-xs font-black uppercase tracking-[0.6em] mb-12 text-slate-400 flex items-center gap-4">
+                        <span class="w-4 h-px bg-slate-800"></span>
+                        Transmission & Pédagogie
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        {teaching.map(item => (
+                            <div class="group bg-white/5 border border-white/10 p-8 space-y-4">
+                                <div class="flex justify-between items-start">
+                                    <span class="text-[9px] font-bold text-slate-400 uppercase tracking-[0.4em]">{item.period}</span>
+                                </div>
+                                <h3 class="text-lg font-light text-white leading-tight uppercase tracking-widest">{item.title}</h3>
+                                <div class="text-[10px] font-bold text-slate-300 uppercase tracking-[0.2em] italic">{item.company}</div>
+                                <p class="text-xs text-slate-400 leading-relaxed font-normal">{item.desc}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right (Sidebar): Info, Outils & Expertise, Certification... -->
             <aside class="print-sidebar lg:col-span-4 space-y-24">
                 <section>
                     <h2 class="text-xs font-black uppercase tracking-[0.6em] mb-12 text-slate-400 flex items-center gap-4">
@@ -156,76 +226,15 @@ const {
                     </div>
                 </section>
             </aside>
-
-            <!-- Right: Experiences -->
-            <div id="experience" class="print-main lg:col-span-8 space-y-12">
-                <h2 class="text-xs font-black uppercase tracking-[0.6em] mb-12 text-slate-400 flex items-center gap-4">
-                    <span class="w-4 h-px bg-slate-800"></span>
-                    Parcours
-                </h2>
-
-                <div class="space-y-32 border-l border-white/10 ml-2 pl-12">
-                    {experiences.map(exp => (
-                        <div class="relative group">
-                            <div class="absolute -left-[52.5px] top-2 w-1.5 h-1.5 bg-slate-800 border border-slate-600 group-hover:bg-white group-hover:border-white transition-colors"></div>
-                            <div class="mb-8 space-y-3">
-                                <span class="text-[9px] font-bold text-slate-400 uppercase tracking-[0.4em]">
-                                    {exp.period}
-                                </span>
-                                <h3 class="text-2xl font-light text-white group-hover:text-white transition-colors tracking-tight">
-                                    {exp.title}
-                                </h3>
-                                <div class="text-xs font-medium text-slate-300 uppercase tracking-[0.2em] italic">
-                                    {exp.company} {exp.location && `— ${exp.location}`}
-                                </div>
-                            </div>
-                            <div class="desc text-slate-200 leading-relaxed max-w-2xl text-sm font-normal space-y-6">
-                                {exp.desc.split('\n\n').map(p => (
-                                    <p>{p}</p>
-                                ))}
-                            </div>
-                            {exp.skills && (
-                                <div class="mt-12 flex flex-wrap gap-2">
-                                    {exp.skills.map(skill => (
-                                        <span class="text-[8px] font-bold px-2 py-0.5 border border-white/10 text-slate-300 uppercase tracking-tighter bg-white/5">
-                                            {skill}
-                                        </span>
-                                    ))}
-                                </div>
-                            )}
-                        </div>
-                    ))}
-                </div>
-
-                <!-- Teaching -->
-                <div class="mt-48">
-                    <h2 class="text-xs font-black uppercase tracking-[0.6em] mb-12 text-slate-400 flex items-center gap-4">
-                        <span class="w-4 h-px bg-slate-800"></span>
-                        Transmission & Pédagogie
-                    </h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                        {teaching.map(item => (
-                            <div class="group bg-white/5 border border-white/10 p-8 space-y-4">
-                                <div class="flex justify-between items-start">
-                                    <span class="text-[9px] font-bold text-slate-400 uppercase tracking-[0.4em]">{item.period}</span>
-                                </div>
-                                <h3 class="text-lg font-light text-white leading-tight uppercase tracking-widest">{item.title}</h3>
-                                <div class="text-[10px] font-bold text-slate-300 uppercase tracking-[0.2em] italic">{item.company}</div>
-                                <p class="text-xs text-slate-400 leading-relaxed font-normal">{item.desc}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
         </div>
     </main>
 
     <!-- Footer (Web Only) -->
     <footer class="no-print bg-black text-white py-64 px-6 mt-32 border-t border-white/10">
         <div class="max-w-4xl mx-auto text-center space-y-16">
-            <h2 class="text-2xl lg:text-4xl font-thin tracking-[0.2em] text-white uppercase">Rigueur, Créativité & Innovation.</h2>
+            <h2 class="text-2xl lg:text-4xl font-thin tracking-[0.2em] text-white uppercase">Innovation, Transmission & Solutions Tech.</h2>
             <p class="text-slate-400 text-[10px] font-bold uppercase tracking-[0.5em] leading-relaxed">
-                Damien Miri — Creative Tech | AI Workflows & Fullstack Design
+                {name} {title ? `— ${title}` : ''}
             </p>
             <div class="pt-12">
                 <a href="/cv-full" class="text-white hover:text-white border border-white/20 hover:border-white px-16 py-4 rounded-none text-[10px] font-bold uppercase tracking-[0.5em] transition-all cursor-pointer">

@@ -1,12 +1,13 @@
 ---
 import { cvData } from '../data/cv';
-import { Mail, Globe, MapPin, Printer, ArrowLeft } from '@lucide/astro';
+import { Mail, Globe, MapPin, Printer, ArrowLeft, Calendar } from '@lucide/astro';
 
 const { 
     name, 
     title, 
     tagline,
     email, 
+    birthDate,
     location, 
     websites, 
     softwareGroups, 
@@ -92,9 +93,9 @@ const {
             }
 
             .sidebar {
-                width: 320px;
+                width: 260px;
                 background-color: var(--sidebar-bg);
-                padding: 40px;
+                padding: 25px;
                 border-right: 1px solid var(--border-color);
                 display: flex;
                 flex-direction: column;
@@ -110,12 +111,13 @@ const {
             }
 
             .profile-img-container {
-                width: 240px;
-                height: 240px;
+                width: 210px;
+                height: 210px;
                 border: 1px solid var(--border-color);
                 overflow: hidden;
                 filter: grayscale(1);
                 margin-bottom: 20px;
+                border-radius: 50%;
             }
 
             .profile-img-container img {
@@ -195,6 +197,7 @@ const {
                 height: 11px;
                 background: white;
                 border: 2px solid var(--text-main);
+                border-radius: 50%;
             }
 
             .exp-meta {
@@ -220,7 +223,13 @@ const {
                 color: #334155;
             }
 
-            .exp-desc p { margin-bottom: 10px; }
+            .exp-desc p {
+                margin-top: 0;
+                margin-bottom: 10px;
+            }
+            .exp-desc p:last-child {
+                margin-bottom: 0;
+            }
 
             .exp-skills {
                 display: flex;
@@ -246,22 +255,41 @@ const {
                     display: none !important;
                 }
                 .cv-container {
-                    margin: 0;
-                    box-shadow: none;
-                    width: 100%;
-                }
-                /* Allow long page printing */
-                .cv-container {
-                    display: block;
+                    margin: 0 !important;
+                    box-shadow: none !important;
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: fixed !important;
                 }
                 .sidebar {
-                    width: 100%;
-                    border-right: none;
-                    border-bottom: 1px solid var(--border-color);
+                    display: table-cell !important;
+                    width: 210px !important;
+                    background-color: var(--sidebar-bg) !important;
+                    border-right: 1px solid var(--border-color) !important;
+                    border-bottom: none !important;
+                    padding: 20px !important;
+                    vertical-align: top !important;
+                    position: static !important;
+                    height: auto !important;
+                }
+                .main-content {
+                    display: table-cell !important;
+                    padding: 25px 35px !important;
+                    vertical-align: top !important;
+                    margin-left: 0 !important;
+                    width: auto !important;
+                }
+                .profile-img-container {
+                    width: 100% !important;
+                    height: auto !important;
+                    aspect-ratio: 1/1 !important;
+                    margin-bottom: 20px !important;
+                    border-radius: 50% !important;
                 }
                 /* Ensure no awkward breaks */
                 .exp-item {
-                    page-break-inside: avoid;
+                    page-break-inside: avoid !important;
+                    break-inside: avoid !important;
                 }
             }
         </style>
@@ -287,6 +315,12 @@ const {
                 </div>
 
                 <div class="space-y-4">
+                    {birthDate && (
+                        <div class="contact-item">
+                            <Calendar size={14} />
+                            Né le {birthDate}
+                        </div>
+                    )}
                     <div class="contact-item">
                         <Mail size={14} />
                         {email}
@@ -355,7 +389,7 @@ const {
             <main class="main-content">
                 <header>
                     <h1>{name}</h1>
-                    <div class="subtitle">{title}</div>
+                    {title && <div class="subtitle">{title}</div>}
                     {tagline && <div style="font-size: 8pt; color: #94a3b8; margin-top: 5px; font-style: italic; letter-spacing: 0.1em; font-weight: 500;">{tagline}</div>}
                 </header>
 

@@ -10,8 +10,8 @@ interface Props {
 
 const { 
 	title, 
-	description = "Damien Miri — Creative Director & AI Solutions Architect basé à Paris. Expert en IA Générative, Motion Design, UX/UI et 3D.",
-	image = "/Damien-miri.webp",
+	description = "Damien Miri — Responsable des Opérations & Conducteur de Travaux basé à Paris. Expert en IoT, systèmes de sécurité connectée, sourcing international et ingénierie de workflows IA.",
+	image = "/damien-miri.jpg",
 	url = "https://cv-damien.vercel.app" 
 } = Astro.props;
 
@@ -30,7 +30,7 @@ const location = "Paris, France";
 		<!-- SEO Meta Tags -->
 		<title>{title}</title>
 		<meta name="description" content={description} />
-		<meta name="keywords" content="Damien Miri, Creative Director, AI Solutions Architect, IA Générative, Motion Design, UX/UI, 3D, Unreal Engine, Paris, France, Freelance IA" />
+		<meta name="keywords" content="Damien Miri, Responsable des Opérations, Conducteur de Travaux, IoT, Sécurité Connectée, Sourcing International, Suivi de Chantier, IA Workflows, Paris" />
 		<meta name="author" content="Damien Miri" />
 		
 		<!-- GEO Meta Tags -->
@@ -65,9 +65,9 @@ const location = "Paris, France";
 			  "@context": "https://schema.org/",
 			  "@type": "Person",
 			  "name": "Damien Miri",
-			  "jobTitle": "Creative Director & AI Solutions Architect",
+			  "jobTitle": "Responsable des Opérations & Conducteur de Travaux",
 			  "url": "https://cv-damien.vercel.app",
-			  "image": "https://cv-damien.vercel.app/Damien-miri.webp",
+			  "image": "https://cv-damien.vercel.app/damien-miri.jpg",
 			  "address": {
 				"@type": "PostalAddress",
 				"addressLocality": "Paris",
@@ -82,7 +82,6 @@ const location = "Paris, France";
 		</script>
 	</head>
 	<body class="text-white selection:bg-white/20 antialiased print:bg-white print:p-0">
-		<div class="fixed inset-0 bg-noise pointer-events-none"></div>
 		<slot />
 	</body>
 </html>
